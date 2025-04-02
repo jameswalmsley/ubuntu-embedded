@@ -1,0 +1,3 @@
+CONFIG_RECIPE:=ubuntu-embedded
+CONFIG_VARIANT:=arm64
+

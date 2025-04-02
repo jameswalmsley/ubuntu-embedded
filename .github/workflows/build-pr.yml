@@ -1,0 +1,51 @@
+name: Build Ubuntu Embedded
+
+on:
+  push:
+  pull_request:
+    types: [opened, reopened, synchronize, review_requested, labeled]
+
+concurrency:
+  group: pipeline-pr-${{github.event.pull_request.number}}
+  cancel-in-progress: true
+
+run-name: "PR Build All from ${{ github.head_ref }} of sha ${{ github.sha }}"
+
+jobs:
+  build_arm:
+    name: "Build ubuntu-embedded images (ARM)"
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Free Disk Space (Ubuntu Runner)
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Compile
+        env:
+          NONINTERACTIVE: y
+
+        run: |
+          git describe --always --tags
+          make ubuntu_embedded_defconfig
+          make docker.build
+          make source-checkout
+          ./docker.sh make
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: assets-for-download-arm64
+          path: out/ubuntu-embedded/images/*
+

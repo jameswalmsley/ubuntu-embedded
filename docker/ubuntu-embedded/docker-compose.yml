@@ -1,0 +1,12 @@
+services:
+  ubuntu-embedded:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ubuntu-embedded:24.04
+    volumes:
+      - ${BASE}:/work
+    hostname: ubuntu-embdedded
+    stdin_open: true
+    tty: true
+    working_dir: /work
