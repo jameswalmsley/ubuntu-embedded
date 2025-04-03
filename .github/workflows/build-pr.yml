@@ -16,21 +16,22 @@ jobs:
     name: "Build ubuntu-embedded images (ARM)"
     runs-on: ubuntu-24.04-arm
     steps:
-      - name: Free Disk Space (Ubuntu Runner)
-        uses: jlumbroso/free-disk-space@main
-        with:
-          tool-cache: false
-          android: true
-          dotnet: true
-          haskell: true
+      # - name: Free Disk Space (Ubuntu Runner)
+      #   uses: jlumbroso/free-disk-space@main
+      #   with:
+      #     tool-cache: false
+      #     android: true
+      #     dotnet: true
+      #     haskell: true
 
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           fetch-tags: true
+          submodules: true
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+      # - name: Set up Docker Buildx
+      #   uses: docker/setup-buildx-action@v2
 
       - name: Compile
         env:
@@ -38,7 +39,7 @@ jobs:
 
         run: |
           git describe --always --tags
-          make ubuntu_embedded_defconfig
+          make ubuntu_embedded_arm64_defconfig
           make docker.build
           make source-checkout
           ./docker.sh make
