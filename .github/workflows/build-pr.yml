@@ -42,7 +42,7 @@ jobs:
           make ubuntu_embedded_arm64_defconfig
           make docker.build
           make source-checkout
-          ./docker.sh make
+          ./docker.sh make -j $(nproc)
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
