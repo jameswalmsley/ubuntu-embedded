@@ -7,7 +7,7 @@ $(L) += $(core-packages)
 
 include $(BUILD_LAYER)
 
-$(core-packages):
-	@arch-chroot $(rootfsdir) /overlay/core-packages.sh 2> /dev/null
+$(core-packages): $(BASE_core-packages)/core-packages.sh
+	arch-chroot $(rootfsdir) /overlay/core-packages.sh
 	$(stamp)
 
