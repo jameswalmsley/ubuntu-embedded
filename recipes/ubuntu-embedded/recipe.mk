@@ -26,6 +26,7 @@ LAYERS += rootfs
 # Image Generation
 #
 LAYERS += squashfs
+LAYERS += imx-uuu
 
 
 #
