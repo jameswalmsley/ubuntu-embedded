@@ -48,6 +48,7 @@ jobs:
           NONINTERACTIVE: y
 
         run: |
+          docker image ls
           git describe --always --tags
           make ubuntu_embedded_arm64_defconfig
           make docker.build
