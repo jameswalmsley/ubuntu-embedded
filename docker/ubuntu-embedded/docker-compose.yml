@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ubuntu-embedded:24.04
+    image: ve-root/ubuntu-embedded:24.04
     volumes:
       - ${BASE}:/work
     hostname: ubuntu-embdedded
