@@ -2,7 +2,7 @@ FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get -y update && \
+RUN apt-get -y update && apt-get -y full-upgrade && \
     apt-get -y install \
         build-essential \
         git \
@@ -19,7 +19,7 @@ RUN apt-get -y update && \
         arch-install-scripts \
         debootstrap \
         uuid-dev \
-        libgnutls28-dev
+        libgnutls28-dev \
         ;
 
 ENV USER=root
