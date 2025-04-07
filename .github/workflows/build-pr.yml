@@ -39,6 +39,7 @@ jobs:
           context: .
           file: docker/ubuntu-embedded/Dockerfile
           push: false
+          load: true
           tags: ve-root/ubuntu-embedded:24.04
           cache-from: type=gha
           cache-to: type=gha,mode=max
