@@ -5,6 +5,8 @@ core-packages:=$(LSTAMP)/core-packages
 
 $(L) += $(core-packages)
 
+DEPENDS += debootstrap
+
 include $(BUILD_LAYER)
 
 $(core-packages): $(BASE_core-packages)/core-packages.sh
