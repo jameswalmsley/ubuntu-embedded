@@ -17,7 +17,10 @@ RUN apt-get -y update && \
         rsync \
         xxd \
         arch-install-scripts \
-        debootstrap
+        debootstrap \
+        uuid-dev \
+        libgnutls28-dev
+        ;
 
 ENV USER=root
 
