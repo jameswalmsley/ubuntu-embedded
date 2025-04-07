@@ -20,6 +20,7 @@ RUN apt-get -y update && apt-get -y full-upgrade && \
         debootstrap \
         uuid-dev \
         libgnutls28-dev \
+        squashfs-tools \
         ;
 
 ENV USER=root
