@@ -25,7 +25,7 @@ LAYERS += rootfs
 #
 # Image Generation
 #
-LAYERS += system-image
+LAYERS += squashfs
 
 
 #
