@@ -10,6 +10,7 @@ LAYERS += imx-atf
 LAYERS += imx-firmware
 LAYERS += op-tee
 LAYERS += bootloader
+LAYERS += imx-mkimage
 LAYERS += kernel
 
 #
