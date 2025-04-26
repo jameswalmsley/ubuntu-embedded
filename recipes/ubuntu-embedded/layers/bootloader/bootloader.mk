@@ -21,11 +21,20 @@ $(T) += bootloader-config
 
 $(call git_clone, u-boot, $(UBOOT_GIT_URL), $(UBOOT_GIT_REF))
 
+#
+# Helper variables
+#
+u-boot-spl:=$(UBOOT_OUT)/spl/u-boot-spl.bin
+
 include $(BUILD_LAYER)
 
 $(uboot): $(uboot-config)
 $(uboot):
 	mkdir -p $(builddir)
+	cp $(SRC_imx-firmware)/imx-ddr-firmware/firmware-imx-8.21.bin $(UBOOT_SOURCE)
+	cp $(SRC_imx-firmware)/imx-firmware-sentinel/firmware-sentinel-0.11.bin $(UBOOT_SOURCE)
+	cp $(imx-atf) $(UBOOT_SOURCE)
+	cp $(optee-os) $(UBOOT_SOURCE)
 	cd $(UBOOT_SOURCE) && $(MAKE) O=$(UBOOT_OUT) CROSS_COMPILE=$(CROSS_COMPILE)
 
 $(uboot-config): $(UBOOT_CONFIG)
