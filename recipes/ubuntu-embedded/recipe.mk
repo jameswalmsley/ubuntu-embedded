@@ -8,6 +8,7 @@ DEBARCH:=arm64
 # 
 LAYERS += imx-atf
 LAYERS += imx-firmware
+LAYERS += op-tee
 LAYERS += bootloader
 LAYERS += kernel
 

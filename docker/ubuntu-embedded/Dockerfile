@@ -21,6 +21,9 @@ RUN apt-get -y update && apt-get -y full-upgrade && \
         uuid-dev \
         libgnutls28-dev \
         squashfs-tools \
+        python3 \
+        python3-cryptography \
+        python3-pyelftools \
         ;
 
 ENV USER=root
