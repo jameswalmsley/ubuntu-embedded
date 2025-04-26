@@ -6,6 +6,7 @@ DEBARCH:=arm64
 #
 # Build bootloader / Kernel from sources
 # 
+LAYERS += imx-atf
 LAYERS += bootloader
 LAYERS += kernel
 
